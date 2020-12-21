@@ -5,10 +5,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
-import ResponsiveDrawer from "./components/ResponsiveDrawer";
-import CardScanner from "./components/CardScanner";
-import CardList from "./components/CardList";
 import EbayListing from "./components/EbayListing"
 
 export default function App() {
@@ -20,28 +16,14 @@ export default function App() {
           <Route path="/ebaylisting/:id">
             <EbayListing />
           </Route>
-          <Route path="/cardlist">
-            <CardListWrapper />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
           <Route path="/">
-            <CardScannerWrapper />
+            <WelcomePage />
           </Route>
         </Switch>
     </Router>
   );
 }
 
-function CardScannerWrapper() {
-  return <ResponsiveDrawer><CardScanner></CardScanner></ResponsiveDrawer>;
-}
-
-function CardListWrapper() {
-  return <ResponsiveDrawer><CardList></CardList></ResponsiveDrawer>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
+function WelcomePage() {
+  return <div>This is the public side of tool!</div>
 }
