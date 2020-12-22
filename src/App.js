@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import EbayListing from "./components/EbayListing"
+import CardScanner from "./components/CardScanner"
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         <Switch>
           <Route path="/ebaylisting/:id">
             <EbayListing />
+          </Route>
+          <Route path="/check/:id">
+            <CardScanner />
           </Route>
           <Route path="/">
             <WelcomePage />
