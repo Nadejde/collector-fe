@@ -21,6 +21,10 @@ export default props => {
   const [uploading, setUploading] = useState(false);
   const [checkResult, setCheckResult] = useState({});
   const [orderNumbers, setOrderNumbers] = useState("");
+  const { collections } = props;
+
+  const collection = collections.filter(c => c.id == id)[0]
+  console.log(collection);
 
   const onChange = (e) => {
     const files = Array.from(e.target.files);
@@ -112,9 +116,27 @@ export default props => {
         </div>);
     else return("");
   }
+
+  const buildEbay = () => {
+    if(collection && collection.ebay){
+      return( 
+        <div>
+          <div>Order missing stickers here: <a href={collection.ebay.missing_stickers_url}>{collection.ebay.missing_stickers_url}</a></div>
+          <div>Or order complete collections:
+              {collection.ebay.full_collections_urls.map(url => {
+                return(<div><a href={url}>{url}</a><br/></div>)
+              })}
+              <br/>
+          </div>
+          <br/>
+        </div>)
+    } else return(<div><br/></div>)
+
+  }
   
   return(
     <div>
+      <div>{buildEbay()}</div>
       <div>This is the new number checker tool. Using this tool you can upload images of your missing numbers lists, or photos of your empty album pages, or just add the numbers in the text box if you have them in a digital format.</div><br/>
       <div>This tool is still very new and in testing so please give me feedback if you think I can improve anything with your order. Thank you!</div><br/>
       <div>Follow these instructions please:</div><br/>

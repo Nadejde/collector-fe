@@ -5,8 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import EbayListing from "./components/EbayListing"
 import CardScanner from "./components/CardScanner"
+import ResponsiveDrawer from "./components/ResponsiveDrawer"
 
 export default function App() {
   return (
@@ -14,14 +14,15 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/ebaylisting/:id">
-            <EbayListing />
-          </Route>
           <Route path="/check/:id">
-            <CardScanner />
+            <ResponsiveDrawer>
+              <CardScanner />
+            </ResponsiveDrawer>
           </Route>
           <Route path="/">
-            <WelcomePage />
+            <ResponsiveDrawer>
+              <WelcomePage />
+            </ResponsiveDrawer>
           </Route>
         </Switch>
     </Router>
@@ -29,5 +30,5 @@ export default function App() {
 }
 
 function WelcomePage() {
-  return <div>This is the public side of tool!</div>
+  return <div>Choose a collection from the list.</div>
 }
