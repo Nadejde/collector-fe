@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import CardScanner from "./components/CardScanner"
 import ResponsiveDrawer from "./components/ResponsiveDrawer"
+import Home from "./components/Home"
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
           </Route>
           <Route path="/">
             <ResponsiveDrawer>
-              <WelcomePage />
+              <Home />
             </ResponsiveDrawer>
           </Route>
         </Switch>
